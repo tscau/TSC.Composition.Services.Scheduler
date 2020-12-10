@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using TSC.Composition.Services.Scheduler.Config;
 
 namespace TSC.Composition.Services.Scheduler
 {

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-TSC.Composition.Services.Scheduler-ADDC3617-BA98-49D7-AA6A-C441A8E505D4</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <ProjectGuid>6C25C3F9-4692-492B-9EF7-2B498BDC7A0D</ProjectGuid>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
