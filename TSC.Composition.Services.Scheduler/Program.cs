@@ -10,6 +10,9 @@ using TSC.Composition.Services.Scheduler.Config;
 
 namespace TSC.Composition.Services.Scheduler
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Program
     {
         /// <summary>
@@ -40,9 +43,15 @@ namespace TSC.Composition.Services.Scheduler
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-              .UseWindowsService()
+                //.UseWindowsService()
+                .UseSystemd()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.ConfigureServices(services =>

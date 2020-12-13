@@ -1,19 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-TSC.Composition.Services.Scheduler-ADDC3617-BA98-49D7-AA6A-C441A8E505D4</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <ProjectGuid>6C25C3F9-4692-492B-9EF7-2B498BDC7A0D</ProjectGuid>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <LangVersion>8.0</LangVersion>
+    <DockerfileRunArguments>-v "C:\data:/data"</DockerfileRunArguments>
+    <DockerfileRunArguments>-v "C:\CorresSystem:/corressytem"</DockerfileRunArguments>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\repos\TSCAU\TSC.Composition.Services.Scheduler\TSC.Composition.Services.Scheduler\TSC.Composition.Services.Scheduler.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Hangfire" Version="1.7.18" />
     <PackageReference Include="Hangfire.JobsLogger" Version="0.2.1" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.18" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
@@ -30,5 +40,15 @@
 
   <ItemGroup>
     <Folder Include="Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TSC.Composition.Services.Scheduler.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

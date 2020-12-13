@@ -7,7 +7,17 @@
       }
     },
     "Docker": {
-      "commandName": "Docker"
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+:20100;http://+:30100",
+        "ASPNETCORE_HTTPS_PORT": "20100",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "httpPort": 30100,
+      "publishAllPorts": true,
+      "useSSL": false
     }
   }
-}
+}                                                                                                                                                 

@@ -119,36 +119,36 @@ namespace TSC.Composition.Services.Scheduler.Config
                 };
                 versions.Add(Assembly.GetExecutingAssembly().GetName().Name, details);
 
-                Assembly sharedAssembly = Assembly.Load("DCS.Composition.Services.Shared");
-                details = new AssemblyVersionDetails
-                {
-                    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
-                    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
-                    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
-                    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
-                };
-                versions.Add(sharedAssembly.GetName().Name, details);
+                //Assembly sharedAssembly = Assembly.Load("TCS.Composition.Services.Shared");
+                //details = new AssemblyVersionDetails
+                //{
+                //    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
+                //    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
+                //    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
+                //    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
+                //};
+                //versions.Add(sharedAssembly.GetName().Name, details);
 
-                sharedAssembly = Assembly.Load("DCS.PostComposition.Services.Shared");
-                details = new AssemblyVersionDetails
-                {
-                    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
-                    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
-                    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
-                    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
-                };
-                versions.Add(sharedAssembly.GetName().Name, details);
+                //sharedAssembly = Assembly.Load("TSC.PostComposition.Services.Shared");
+                //details = new AssemblyVersionDetails
+                //{
+                //    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
+                //    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
+                //    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
+                //    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
+                //};
+                //versions.Add(sharedAssembly.GetName().Name, details);
 
-                //add the shared assemblies as well
-                sharedAssembly = Assembly.Load("DCS.Shared.DataAccess.Outbound");
-                details = new AssemblyVersionDetails
-                {
-                    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
-                    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
-                    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
-                    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
-                };
-                versions.Add(sharedAssembly.GetName().Name, details);
+                ////add the shared assemblies as well
+                //sharedAssembly = Assembly.Load("TSC.Shared.DataAccess.Outbound");
+                //details = new AssemblyVersionDetails
+                //{
+                //    ReleaseBuild = sharedAssembly.GetName().Version.ToString(),
+                //    ReleaseVersion = sharedAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version,
+                //    BuildNumber = sharedAssembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion,
+                //    ReleaseName = sharedAssembly.GetCustomAttribute<AssemblyProductAttribute>().Product
+                //};
+                //versions.Add(sharedAssembly.GetName().Name, details);
                 return versions;
             }
         }

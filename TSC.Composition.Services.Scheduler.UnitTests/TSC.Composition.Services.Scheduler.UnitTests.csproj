@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <ProjectGuid>3F10C5E4-C422-4E43-9418-10822CA76FFD</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -17,6 +18,31 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MOQ" Version="4.14.2" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="12.1.1" />
+    <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="12.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TSC.Composition.Services.Scheduler\TSC.Composition.Services.Scheduler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Support\AllNull.App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Support\App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="CopyAppConfig" AfterTargets="Build" DependsOnTargets="Build">
+    <CreateItem Include="$(OutputPath)$(AssemblyName).dll.config">
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="$(OutputPath)testhost.dll.config" />
+  </Target>
 </Project>
