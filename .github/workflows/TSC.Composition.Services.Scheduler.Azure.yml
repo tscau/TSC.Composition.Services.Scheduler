@@ -18,7 +18,9 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj
+      run: |
+        dotnet nuget add source https://nuget.pkg.github.com/tcsau/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
+        dotnet restore source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj
     - name: Build
       run: dotnet build TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
     - name: Test
