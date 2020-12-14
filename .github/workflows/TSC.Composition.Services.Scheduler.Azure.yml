@@ -29,7 +29,9 @@ jobs:
     - name: Test
       run: dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity normal
     - name: Publish the App
-      run: dotnet publish source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj -o /source/published
+      run: |
+        mkdir source/published
+        dotnet publish source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj -o source/published
     - name: Store Published App
       uses: actions/upload-artifact@v2
       with:
