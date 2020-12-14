@@ -22,6 +22,6 @@ jobs:
         dotnet nuget add source https://nuget.pkg.github.com/tcsau/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
         dotnet restore source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj
     - name: Build
-      run: dotnet build TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
+      run: dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity normal
+      run: dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity normal
