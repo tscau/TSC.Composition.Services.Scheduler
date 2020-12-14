@@ -1,7 +1,7 @@
 $buildYear = Get-Date -Format "yyyy"
 $buildMonth = Get-Date -Format "MM"
 $buildDay =  Get-Date -Format "dd"
-$rev = ${{ github.run_number }}
+$rev = $env:GITHUB_RUN_NUMBER
 Write-Host "rev number is " $rev
 $customBuildVersion = -join($buildYear, ".", $buildMonth, ".", $buildDay, ".", $rev)
 
