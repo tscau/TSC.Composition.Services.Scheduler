@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TSC.Composition.Services.Scheduler</name>
+    </assembly>
+    <members>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.AppConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Config.AppConfig.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppConfig.AppSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppConfig.Logging">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppConfig.Kestrel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppConfig.ConnectionStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.AppSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.Environment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.DaysToFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.HangfireWorkerCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.MaxRecordsPerCsvFile">
+            <summary>
+            Max records per csv file before splitting the file into multiples
+            Defaults to 50,000
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.DelayBetweenCsvSchedules">
+            <summary>
+            When a csv file has been split into multiple batches, this is the time to wait between scheduling each batch
+            Defaults to 15 seconds
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.UserToRecordAgainst">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.Versions">
+            <summary>
+            Returns the version of the application
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.Server">
+            <summary>
+            Returns the name of the server that is currently executing the code
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.JobFolderRootPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AppSettings.BaseStagingFolder">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.AssemblyVersionDetails">
+            <summary>
+            Class to hold the Assembly version details
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AssemblyVersionDetails.ReleaseBuild">
+            <summary>
+            The Assembly version. Set by the build system to be the release number. Corresponds to the AssemblyVersion attribute in the AssemblyInfo.cs file, 
+            and the actual assembly version when looking at the .NET DLL Metadata
+            e.g. 20:4:430:17292
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AssemblyVersionDetails.ReleaseVersion">
+            <summary>
+            The AssemblyFile version. Set by the build system to be the release number
+            Corresponds to the AssemblyFileVersion attribute int he AssemblyInfo.cs
+            e.g. 20.4.430.0
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AssemblyVersionDetails.BuildNumber">
+            <summary>
+            Set by the build system to be the build number of the application. Represents the actual build that produced the compil;ed applicaiton, and can be used to view the TFS build that produced the packages
+            Corresponds to the AssemblyInformationVersion attribute in teh AssemblyInfo.cs
+            e.g. 2020.11.10.1
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.AssemblyVersionDetails.ReleaseName">
+            <summary>
+            Set by the build system to indicate the name of the release that the compiled package belongs to
+            Corresponds to the AssemblyProduct attribute in the AssemblyInfo.cs file
+            e.g. 20Q4IP430
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.ConnectionStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ConnectionStrings.MonolithicDB">
+            <summary>
+            The Connection String for the Outbound database
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ConnectionStrings.HangfireCompositionDb">
+            <summary>
+            The connections tring for the hangfire database
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ConnectionStrings.HangfireDeliveryDb">
+            <summary>
+            The Hangfire database that will be used for post composition services
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.IAppConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppConfig.AppSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppConfig.Logging">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppConfig.Kestrel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppConfig.ConnectionStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.IAppSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.Environment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.DaysToFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.HangfireWorkerCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.UserToRecordAgainst">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.Versions">
+            <summary>
+            The version of the application abd dependent assemblies
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.Server">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.MaxRecordsPerCsvFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.DelayBetweenCsvSchedules">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.JobFolderRootPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IAppSettings.BaseStagingFolder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.IConnectionStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IConnectionStrings.MonolithicDB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IConnectionStrings.HangfireCompositionDb">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IConnectionStrings.HangfireDeliveryDb">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.IKestrelSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.RESTAPIPort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.UseCertificateForSSL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.CertificateSubject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.CertificateStoreName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.CertificateLocation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.IKestrelSettings.CertificateAllowInvalid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.ILoggingSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ILoggingSettings.LogServiceUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.KestrelSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.RESTAPIPort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.UseCertificateForSSL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.CertificateSubject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.CertificateStoreName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.CertificateLocation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.KestrelSettings.CertificateAllowInvalid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Config.LoggingSettings">
+            <summary>
+            TGhe Logging section in the app.config file
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.LoggingSettings.LogServiceUrl">
+            <summary>
+            The URL to use when logging to the central logging service
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Controllers.SchedulerController">
+            <summary>
+            The main controller that calls the methods
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.#ctor(TSC.Composition.Services.Scheduler.Config.IAppConfig)">
+            <summary>
+            Default constructor that sets the objects passed to it from the Dependancy Injection framework
+            </summary>
+            <param name="appConfig"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunHighPriority">
+            <summary>
+            REST Endpoint to place the message on teh high priority queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunLowPriority">
+            <summary>
+            REST Endpoint to place the message on teh low priority queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunSchedule">
+            <summary>
+            REST Endpoint to call the schedule directly. Simulates the call from the queue mechanism
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.GetConfig">
+            <summary>
+            REST Endpoint that wil return the current configuration settings for the service. These are the running values, and may be over-written by seperate configuration operations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.VersionInfo">
+            <summary>
+            REST end point to get the version of the application and any shared components that make sense to report on
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.Heartbeat">
+            <summary>
+            REST Endpoint used to determine whether the services is running or not
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
