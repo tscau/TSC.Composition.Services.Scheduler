@@ -20,22 +20,22 @@ jobs:
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:
-        path: ~\sonar\cache
+        path: ~/sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
     - name: Cache SonarCloud scanner
       id: cache-sonar-scanner
       uses: actions/cache@v1
       with:
-        path: .\.sonar\scanner
+        path: ./.sonar/scanner
         key: ${{ runner.os }}-sonar-scanner
         restore-keys: ${{ runner.os }}-sonar-scanner
     - name: Install SonarCloud scanner
       if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
       shell: pwsh
       run: |
-        New-Item -Path .\.sonar\scanner -ItemType Directory
-        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner        
+        New-Item -Path ./.sonar/scanner -ItemType Directory
+        dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner        
     - name: Install dependencies
       run: |
         dotnet nuget add source  https://nuget.pkg.github.com/tscau/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
@@ -44,14 +44,14 @@ jobs:
       shell: pwsh
       run: ./.github/SetVersioning_NetCoreApps_GitHub.ps1
     - name: Build, Test, and Publish
-      #env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        #./.sonar/scanner/dotnet-sonarscanner begin /k:"tscau_TSC.Composition.Services.Scheduler" /o:"tscau" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        ./.sonar/scanner/dotnet-sonarscanner begin /k:"tscau_TSC.Composition.Services.Scheduler" /o:"tscau" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
         dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
         dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity normal
-        #./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         mkdir source/published
         dotnet publish source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj -o source/published
     - name: Store Published App
