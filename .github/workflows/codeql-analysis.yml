@@ -49,9 +49,22 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
-
+    #- name: Autobuild
+    #  uses: github/codeql-action/autobuild@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: |
+        dotnet nuget add source  https://nuget.pkg.github.com/tscau/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
+        dotnet restore source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj
+    - name: Set Version
+      shell: pwsh
+      run: ./.github/SetVersioning_NetCoreApps_GitHub.ps1
+    - name: Build, Test, and Publish
+      run: |
+        dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
 
