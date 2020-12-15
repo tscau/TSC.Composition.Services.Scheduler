@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: |
-        dotnet nuget add source https://nuget.pkg.github.com/rcangus/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
+        dotnet nuget add source  https://nuget.pkg.github.com/tscau/index.json -n github -u rcangus -p ${{ secrets.PACKAGES_PAT }} --store-password-in-clear-text
         dotnet restore source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj
     - name: Set Version
       shell: pwsh
