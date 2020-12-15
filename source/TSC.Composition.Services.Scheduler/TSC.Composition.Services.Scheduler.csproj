@@ -13,6 +13,7 @@
     <LangVersion>8.0</LangVersion>
     <DockerfileRunArguments>-v "C:\data:/data"</DockerfileRunArguments>
     <DockerfileRunArguments>-v "C:\CorresSystem:/corressytem"</DockerfileRunArguments>
+    <RepositoryUrl>https://github.com/tscau/TSC.Composition.Services.Scheduler</RepositoryUrl>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,7 +36,8 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.EventLog" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
-    
+    <PackageReference Include="TCS.Shared" Version="*" />
+    <PackageReference Include="TCS.Composition.Services.Shared" Version="*" />
   </ItemGroup>
 
   <ItemGroup>

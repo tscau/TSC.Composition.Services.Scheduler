@@ -15,7 +15,7 @@ namespace TSC.Composition.Services.Scheduler.UnitTests
             mockAppConfig.Setup(x => x.AppSettings.DaysToFilter).Returns(0);
 
             SchedulerController scheduler = new SchedulerController(mockAppConfig.Object);
-            var result = scheduler.RunHighPriority();
+            var result = scheduler.RunHighPriority(new Shared.MessageFormats.CompositionMessage());
             Assert.NotNull(result);
             OkResult expectedResult = new OkResult();
             Assert.Equal(expectedResult.StatusCode, ((OkResult)result).StatusCode);
@@ -28,7 +28,7 @@ namespace TSC.Composition.Services.Scheduler.UnitTests
             mockAppConfig.Setup(x => x.AppSettings.DaysToFilter).Returns(0);
 
             SchedulerController scheduler = new SchedulerController(mockAppConfig.Object);
-            var result = scheduler.RunLowPriority();
+            var result = scheduler.RunLowPriority(new Shared.MessageFormats.CompositionMessage());
             Assert.NotNull(result);
             OkResult expectedResult = new OkResult();
             Assert.Equal(expectedResult.StatusCode, ((OkResult)result).StatusCode);
@@ -41,7 +41,7 @@ namespace TSC.Composition.Services.Scheduler.UnitTests
             mockAppConfig.Setup(x => x.AppSettings.DaysToFilter).Returns(0);
 
             SchedulerController scheduler = new SchedulerController(mockAppConfig.Object);
-            var result = scheduler.RunSchedule();
+            var result = scheduler.RunSchedule(new Shared.MessageFormats.CompositionMessage());
             Assert.NotNull(result);
             OkResult expectedResult = new OkResult();
             Assert.Equal(expectedResult.StatusCode, ((OkResult)result).StatusCode);

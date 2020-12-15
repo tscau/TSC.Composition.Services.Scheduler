@@ -344,19 +344,19 @@
             </summary>
             <param name="appConfig"></param>
         </member>
-        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunHighPriority">
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunHighPriority(TSC.Composition.Services.Shared.MessageFormats.CompositionMessage)">
             <summary>
             REST Endpoint to place the message on teh high priority queue
             </summary>
             <returns></returns>
         </member>
-        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunLowPriority">
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunLowPriority(TSC.Composition.Services.Shared.MessageFormats.CompositionMessage)">
             <summary>
             REST Endpoint to place the message on teh low priority queue
             </summary>
             <returns></returns>
         </member>
-        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunSchedule">
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.RunSchedule(TSC.Composition.Services.Shared.MessageFormats.CompositionMessage)">
             <summary>
             REST Endpoint to call the schedule directly. Simulates the call from the queue mechanism
             </summary>

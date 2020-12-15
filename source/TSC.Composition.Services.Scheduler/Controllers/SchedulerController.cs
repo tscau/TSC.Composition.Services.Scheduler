@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TSC.Composition.Services.Scheduler.Config;
+using TSC.Composition.Services.Shared.MessageFormats;
 
 namespace TSC.Composition.Services.Scheduler.Controllers
 {
@@ -34,7 +35,7 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("runhighpriority")]
-        public ActionResult RunHighPriority()
+        public ActionResult RunHighPriority(CompositionMessage message)
         {
 
             return new OkResult();
@@ -46,7 +47,7 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("runlowpriority")]
-        public ActionResult RunLowPriority()
+        public ActionResult RunLowPriority(CompositionMessage message)
         {
 
             return new OkResult();
@@ -58,7 +59,7 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("runschedule")]
-        public ActionResult RunSchedule()
+        public ActionResult RunSchedule(CompositionMessage message)
         {
 
             return new OkResult();
