@@ -351,3 +351,4 @@ MigrationBackup/
 /.sonarqube
 /.sonar/scanner
 /source/results
+/source/TSC.Composition.Services.Scheduler/C/repos/TSCAU/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler

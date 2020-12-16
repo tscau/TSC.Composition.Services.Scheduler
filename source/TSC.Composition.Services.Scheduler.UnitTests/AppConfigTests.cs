@@ -16,7 +16,7 @@ namespace TSC.Composition.Services.Scheduler.UnitTests
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var assemblyPath = assembly.GetFiles()[0].Name;
             var assemblyDir = System.IO.Path.GetDirectoryName(assemblyPath);
-            File.Copy(Path.Combine(assemblyDir, @"Support\App.config"), Path.Combine(assemblyDir, "testhost.dll.config"), true);
+            File.Copy(Path.Combine(assemblyDir, @"Support/App.config"), Path.Combine(assemblyDir, "testhost.dll.config"), true);
 
             IAppConfig cfg = new AppConfig();
 
