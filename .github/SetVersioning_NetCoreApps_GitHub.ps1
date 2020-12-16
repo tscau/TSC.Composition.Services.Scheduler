@@ -63,3 +63,4 @@ ForEach ($file in $assemblyInfoCSharp)
     $content = $content -replace '\[assembly:\sAssemblyDescription\("(.*)"\)\]', "[assembly: AssemblyDescription(`"$customBuildVersion`")]"
     $content | Out-File $file -Encoding utf8
 }
+echo "::set-output name=RELEASE_NAME::$($releaseName)"
