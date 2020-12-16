@@ -58,6 +58,7 @@ jobs:
         #dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
         dotnet msbuild source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj /p:configuration=Release
         dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity d --collect="XPlat Code Coverage" --settings source/coverlet.runsettings --logger trx --results-directory source/results /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=source/TestResults
+        ls -al source/results
         ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         mkdir source/published
         dotnet publish source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj -o source/published
