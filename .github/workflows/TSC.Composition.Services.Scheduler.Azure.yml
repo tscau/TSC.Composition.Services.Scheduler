@@ -56,7 +56,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         mkdir source/results
-        ./.sonar/scanner/dotnet-sonarscanner begin /k:"tscau_TSC.Composition.Services.Scheduler" /o:"tscau" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="source/results/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="source/results/*.trx" /d:sonar.projectVersion=${{ steps.set-version.outputs.RELEASE_NAME }}
+        ./.sonar/scanner/dotnet-sonarscanner begin /k:"tscau_TSC.Composition.Services.Scheduler" /o:"tscau" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="source/results/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="source/results/*.trx" /v:${{ steps.set-version.outputs.RELEASE_NAME }}
         #dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
         dotnet msbuild source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj /p:configuration=Release
         dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --verbosity n --collect="XPlat Code Coverage" --settings source/coverlet.runsettings --logger trx --results-directory source/results /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=source/results
