@@ -57,7 +57,7 @@ jobs:
         ./.sonar/scanner/dotnet-sonarscanner begin /k:"tscau_TSC.Composition.Services.Scheduler" /o:"tscau" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="source/results/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="source/results/**/*.trx"
         #dotnet build source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj --configuration Release --no-restore
         dotnet msbuild source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj /p:configuration=Release
-        dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity normal --collect="XPlat Code Coverage" --settings source/coverlet.runsettings --logger trx --results-directory source/results
+        dotnet test source/TSC.Composition.Services.Scheduler.UnitTests/TSC.Composition.Services.Scheduler.UnitTests.csproj --no-restore --verbosity d --collect="XPlat Code Coverage" --settings source/coverlet.runsettings --logger trx --results-directory source/results /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=source/TestResults
         ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         mkdir source/published
         dotnet publish source/TSC.Composition.Services.Scheduler/TSC.Composition.Services.Scheduler.csproj -o source/published
