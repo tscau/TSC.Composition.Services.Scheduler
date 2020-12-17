@@ -1,5 +1,4 @@
-﻿using Moq;
-using System;
+﻿using System;
 using System.IO;
 using TSC.Composition.Services.Scheduler.Config;
 using Xunit;

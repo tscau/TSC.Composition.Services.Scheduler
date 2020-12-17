@@ -48,7 +48,7 @@ namespace TSC.Composition.Services.Scheduler
                     Title = "Scheduler API",
                     Version = "v1",
                     Description = "The Scheduler API used to manage the Scheduler via a REST endpoint"
-                    
+
                 });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
