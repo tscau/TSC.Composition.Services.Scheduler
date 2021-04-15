@@ -11,9 +11,14 @@ using System;
 using System.IO;
 using System.Reflection;
 using TSC.Composition.Services.Scheduler.Config;
+using TSC.Composition.Services.Scheduler.Domain;
+using TSC.Composition.Services.Shared.Interfaces;
 
 namespace TSC.Composition.Services.Scheduler
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
         /// <summary>
@@ -28,7 +33,7 @@ namespace TSC.Composition.Services.Scheduler
         /// <summary>
         /// 
         /// </summary>
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         /// <summary>
         /// 
@@ -39,6 +44,7 @@ namespace TSC.Composition.Services.Scheduler
         {
             var appConfig = new AppConfig();
 
+            
             services.AddControllers();
             services.ConfigureSwaggerGen(c => c.CustomSchemaIds(type => type.FullName));
             services.AddSwaggerGen(c =>
@@ -55,8 +61,8 @@ namespace TSC.Composition.Services.Scheduler
                 c.IncludeXmlComments(xmlPath);
             });
 
-
-
+            
+            services.AddTransient<IScheduler, SchedulerImplementation>();
             services.AddHangfire(configuration => configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSerilogLogProvider()
@@ -73,8 +79,7 @@ namespace TSC.Composition.Services.Scheduler
                     DisableGlobalLocks = true,
                     PrepareSchemaIfNecessary = true
                 }));
-            //var queues = new string[] { GlobalSchedulerQueues.GlobalSchedulerPutQueue };
-            var queues = new string[] { "Default" };
+            var queues = new[] { Shared.Queues.SchedulerQueues.HighVolumeQueue, Shared.Queues.SchedulerQueues.LowVolumQueue };
             services.AddHangfireServer(options =>
             {
                 options.Queues = queues;
@@ -90,6 +95,7 @@ namespace TSC.Composition.Services.Scheduler
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.UseStaticFiles();
             if (env.IsDevelopment())
             {

@@ -283,6 +283,21 @@
             
             </summary>
         </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ILoggingSettings.BatchLogFileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ILoggingSettings.BatchLogFileName2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.ILoggingSettings.RelativeJobLogFileLocation">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:TSC.Composition.Services.Scheduler.Config.ILoggingSettings.LogServiceUrl">
             <summary>
             
@@ -333,6 +348,26 @@
             The URL to use when logging to the central logging service
             </summary>
         </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.LoggingSettings.BatchLogFileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.LoggingSettings.BatchLogFileName2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.LoggingSettings.RelativeJobLogFileLocation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TSC.Composition.Services.Scheduler.Config.LoggingSettings.BatchLogFileBasePath">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:TSC.Composition.Services.Scheduler.Controllers.SchedulerController">
             <summary>
             The main controller that calls the methods
@@ -362,6 +397,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.SetConfig(System.String,System.String)">
+            <summary>
+            REST Endpoint that wil return the current configuration settings for the service. These are the running values, and may be over-written by seperate configuration operations
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TSC.Composition.Services.Scheduler.Controllers.SchedulerController.GetConfig">
             <summary>
             REST Endpoint that wil return the current configuration settings for the service. These are the running values, and may be over-written by seperate configuration operations
@@ -378,6 +419,167 @@
             <summary>
             REST Endpoint used to determine whether the services is running or not
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation.#ctor(TSC.Composition.Services.Scheduler.Config.IAppConfig)">
+            <summary>
+            
+            </summary>
+            <param name="appConfig"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation.RunHighVolumeSchedule(TSC.Composition.Services.Shared.MessageFormats.CompositionMessage,Hangfire.Server.PerformContext)">
+            <summary>
+            
+            </summary>
+            <param name="msg"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation.RunLowVolumeSchedule(TSC.Composition.Services.Shared.MessageFormats.CompositionMessage,Hangfire.Server.PerformContext)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLog.LogDelegate">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLog.CreateForBatchId(System.Int64,System.String,System.String,System.String)">
+             <summary>
+             
+             </summary>
+             <param name="batchId"></param>
+             <param name="jobPath"></param>
+            <param name="logFileName"></param>
+            <param name="logFolderName"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLog.Fatal(System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="log"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNUmber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLog.CombineArgs(System.String,System.String,System.Int32,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.CreateForBatchId(System.Int64,System.String,System.String,System.String)">
+             <summary>
+             
+             </summary>
+             <param name="batchId"></param>
+             <param name="jobPath"></param>
+            <param name="logFileName"></param>
+            <param name="logFolderName"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Fatal(System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <param name="format"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Debug(System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Error(System.Exception,System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+            <param name="args"></param>
+            <param name="format"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Info(System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <param name="format"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Verbose(System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <param name="format"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.Warn(System.String,System.Object[],System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <param name="format"></param>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.PerBatchLogger.CombineArgs(System.String,System.String,System.Int32,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="callerMemberName"></param>
+            <param name="callerFilePath"></param>
+            <param name="callerLineNumber"></param>
+            <param name="args"></param>
             <returns></returns>
         </member>
         <member name="T:TSC.Composition.Services.Scheduler.Program">

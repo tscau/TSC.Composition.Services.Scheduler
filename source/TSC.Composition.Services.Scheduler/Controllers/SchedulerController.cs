@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using TSC.Composition.Services.Scheduler.Config;
+using TSC.Composition.Services.Scheduler.Domain;
 using TSC.Composition.Services.Shared.MessageFormats;
 
 namespace TSC.Composition.Services.Scheduler.Controllers
@@ -11,7 +14,6 @@ namespace TSC.Composition.Services.Scheduler.Controllers
     [ApiController]
     public class SchedulerController : ControllerBase
     {
-
         readonly IAppConfig _appConfig;
 
         /// <summary>
@@ -32,7 +34,8 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         [Route("runhighpriority")]
         public ActionResult RunHighPriority(CompositionMessage message)
         {
-
+            SchedulerImplementation impl = new SchedulerImplementation(_appConfig);
+            impl.RunHighVolumeSchedule(message, null);
             return new OkResult();
         }
 
@@ -44,7 +47,8 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         [Route("runlowpriority")]
         public ActionResult RunLowPriority(CompositionMessage message)
         {
-
+            SchedulerImplementation impl = new SchedulerImplementation(_appConfig);
+            impl.RunLowVolumeSchedule(message, null);
             return new OkResult();
         }
 
@@ -58,6 +62,18 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         {
 
             return new OkResult();
+        }
+
+        /// <summary>
+        /// REST Endpoint that wil return the current configuration settings for the service. These are the running values, and may be over-written by seperate configuration operations
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("setconfig")]
+        public JsonResult SetConfig(string configKey, string configValue)
+        {
+            _appConfig.Logging.BatchLogFileName = configValue;
+            return new JsonResult(_appConfig);
         }
 
         /// <summary>

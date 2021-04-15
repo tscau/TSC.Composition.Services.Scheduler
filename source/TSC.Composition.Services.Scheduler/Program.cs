@@ -23,7 +23,9 @@ namespace TSC.Composition.Services.Scheduler
         public static async Task Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
+                    .Enrich.WithMachineName()
                     .ReadFrom.AppSettings()
+                    .Enrich.FromLogContext()
                     .CreateLogger();
 
             try
@@ -52,6 +54,10 @@ namespace TSC.Composition.Services.Scheduler
             Host.CreateDefaultBuilder(args)
                 //.UseWindowsService()
                 .UseSystemd()
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddSerilog();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.ConfigureServices(services =>

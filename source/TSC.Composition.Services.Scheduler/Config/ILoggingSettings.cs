@@ -8,7 +8,25 @@
         /// <summary>
         /// 
         /// </summary>
-        public string LogServiceUrl { get; }
+        public string BatchLogFileName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string BatchLogFileName2 { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string RelativeJobLogFileLocation { get; set; }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string LogServiceUrl { get; set; }
+
+        public string BatchLogFileBasePath { get; set; }
     }
 }
