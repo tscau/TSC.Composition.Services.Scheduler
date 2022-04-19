@@ -426,7 +426,7 @@
             
             </summary>
         </member>
-        <member name="M:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation.#ctor(TSC.Composition.Services.Scheduler.Config.IAppConfig)">
+        <member name="M:TSC.Composition.Services.Scheduler.Domain.SchedulerImplementation.#ctor(TSC.Composition.Services.Scheduler.Config.IAppConfig,Microsoft.ApplicationInsights.TelemetryClient)">
             <summary>
             
             </summary>
@@ -582,6 +582,35 @@
             <param name="args"></param>
             <returns></returns>
         </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Infrastructure.TSCLoggingSink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.TSCLoggingSink.#ctor(System.IFormatProvider,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="formatrProvider"></param>
+            <param name="logServiceUrl"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.TSCLoggingSink.Emit(Serilog.Events.LogEvent)">
+            <summary>
+            
+            </summary>
+            <param name="logEvent"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.TSCLoggingSink.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:TSC.Composition.Services.Scheduler.Infrastructure.TSCLoggingSink.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:TSC.Composition.Services.Scheduler.Program">
             <summary>
             
@@ -600,6 +629,11 @@
             </summary>
             <param name="args"></param>
             <returns></returns>
+        </member>
+        <member name="T:TSC.Composition.Services.Scheduler.Startup">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:TSC.Composition.Services.Scheduler.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>

@@ -1,9 +1,12 @@
 ﻿using Hangfire.Server;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
 using System;
+using System.Net.Http;
 using TSC.Composition.Services.Scheduler.Config;
 using TSC.Composition.Services.Scheduler.Infrastructure;
 using TSC.Composition.Services.Shared.Interfaces;
@@ -17,14 +20,17 @@ namespace TSC.Composition.Services.Scheduler.Domain
     public class SchedulerImplementation : IScheduler
     {
         readonly IAppConfig _appConfig;
+        private readonly TelemetryClient _telemetryClient;
+        private static HttpClient _httpClient = new HttpClient();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="appConfig"></param>
-        public SchedulerImplementation(IAppConfig appConfig)
+        public SchedulerImplementation(IAppConfig appConfig, TelemetryClient tc)
         {
             _appConfig = appConfig;
+            _telemetryClient = tc;
         }
 
         /// <summary>
@@ -35,6 +41,15 @@ namespace TSC.Composition.Services.Scheduler.Domain
         /// <returns></returns>
         public string RunHighVolumeSchedule(CompositionMessage msg, PerformContext context)
         {
+            using (_telemetryClient.StartOperation<RequestTelemetry>("operation"))
+            {
+                Log.Warning("A sample warning message. By default, logs with severity Warning or higher is captured by Application Insights");
+                Log.Information("Calling bing.com");
+                var res = _httpClient.GetAsync("https://bing.com");
+                Log.Information("Calling bing completed with status:" + res.Status);
+                _telemetryClient.TrackEvent("Bing call event completed");
+            }
+
             IPerBatchLogger perBatchLogger = new PerBatchLogger();
             Logger batchLogger = perBatchLogger.CreateForBatchId(9999, _appConfig.Logging.BatchLogFileBasePath, "Logs", _appConfig.Logging.BatchLogFileName);
             PerBatchLog.CreateForBatchId(9999, _appConfig.Logging.BatchLogFileBasePath, "Logs", _appConfig.Logging.BatchLogFileName2);

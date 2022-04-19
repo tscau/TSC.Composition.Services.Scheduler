@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using TSC.Composition.Services.Scheduler.Config;
@@ -34,7 +36,10 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         [Route("runhighpriority")]
         public ActionResult RunHighPriority(CompositionMessage message)
         {
-            SchedulerImplementation impl = new SchedulerImplementation(_appConfig);
+            TelemetryConfiguration tcconfig = new TelemetryConfiguration("7ff36511-0d21-4f97-b2f4-27bbc6bc9461");
+            tcconfig.ConnectionString = "InstrumentationKey=7ff36511-0d21-4f97-b2f4-27bbc6bc9461;IngestionEndpoint=https://australiaeast-0.in.applicationinsights.azure.com/";
+            TelemetryClient tc = new TelemetryClient(tcconfig);
+            SchedulerImplementation impl = new SchedulerImplementation(_appConfig, tc);
             impl.RunHighVolumeSchedule(message, null);
             return new OkResult();
         }
@@ -47,7 +52,10 @@ namespace TSC.Composition.Services.Scheduler.Controllers
         [Route("runlowpriority")]
         public ActionResult RunLowPriority(CompositionMessage message)
         {
-            SchedulerImplementation impl = new SchedulerImplementation(_appConfig);
+            TelemetryConfiguration tcconfig = new TelemetryConfiguration("7ff36511-0d21-4f97-b2f4-27bbc6bc9461");
+            tcconfig.ConnectionString = "InstrumentationKey=7ff36511-0d21-4f97-b2f4-27bbc6bc9461;IngestionEndpoint=https://australiaeast-0.in.applicationinsights.azure.com/";
+            TelemetryClient tc = new TelemetryClient(tcconfig);
+            SchedulerImplementation impl = new SchedulerImplementation(_appConfig, tc);
             impl.RunLowVolumeSchedule(message, null);
             return new OkResult();
         }

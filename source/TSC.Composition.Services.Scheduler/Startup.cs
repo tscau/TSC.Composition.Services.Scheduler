@@ -44,7 +44,8 @@ namespace TSC.Composition.Services.Scheduler
         {
             var appConfig = new AppConfig();
 
-            
+            services.AddApplicationInsightsTelemetryWorkerService();
+
             services.AddControllers();
             services.ConfigureSwaggerGen(c => c.CustomSchemaIds(type => type.FullName));
             services.AddSwaggerGen(c =>
